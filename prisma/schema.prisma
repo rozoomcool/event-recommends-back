@@ -9,15 +9,26 @@ datasource db {
 }
 
 model User {
-  id               Int              @id @default(autoincrement())
-  email            String           @unique
-  password         String
-  role             Role
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      Role
   // profile          Profile?
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @default(now()) @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
+model Activity {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  tags        Tag[]        @relation("EntertainmentTags")
+}
+
+model Tag {
+  name           String           @id
+  entertainments Activity[] @relation("EntertainmentTags")
+}
 
 enum Role {
   ADMIN

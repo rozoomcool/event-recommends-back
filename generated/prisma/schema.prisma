@@ -18,6 +18,18 @@ model User {
   updatedAt DateTime @default(now()) @updatedAt
 }
 
+model Activity {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  tags        Tag[]  @relation("EntertainmentTags")
+}
+
+model Tag {
+  name           String     @id
+  entertainments Activity[] @relation("EntertainmentTags")
+}
+
 enum Role {
   ADMIN
   MODERATOR
