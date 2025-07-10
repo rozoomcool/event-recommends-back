@@ -132,7 +132,16 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.ActivityScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  description: 'description'
+  description: 'description',
+  weatherTypes: 'weatherTypes',
+  timeOfDay: 'timeOfDay',
+  minBudget: 'minBudget',
+  maxBudget: 'maxBudget',
+  isOutdoor: 'isOutdoor',
+  isHomeActivity: 'isHomeActivity',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TagScalarFieldEnum = {
@@ -147,6 +156,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',

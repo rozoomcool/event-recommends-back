@@ -12,9 +12,10 @@ import { diskStorage } from 'multer';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { MulterConfigService } from './config/multer.config';
 import { ServeStaticConfigService } from './config/serve-static.config';
+import { ActivitiesModule } from './activities/activities.module';
 
 @Module({
-  imports: [UserModule, PrismaModule, ConfigModule.forRoot({
+  imports: [UserModule, ActivitiesModule, PrismaModule, ConfigModule.forRoot({
     envFilePath: ".env.dev",
     load: [configuration]
   }),

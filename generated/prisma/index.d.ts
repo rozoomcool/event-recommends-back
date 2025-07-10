@@ -2186,57 +2186,107 @@ export namespace Prisma {
   }
 
   export type ActivityAvgAggregateOutputType = {
-    id: number | null
+    minBudget: number | null
+    maxBudget: number | null
   }
 
   export type ActivitySumAggregateOutputType = {
-    id: number | null
+    minBudget: number | null
+    maxBudget: number | null
   }
 
   export type ActivityMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     title: string | null
     description: string | null
+    minBudget: number | null
+    maxBudget: number | null
+    isOutdoor: boolean | null
+    isHomeActivity: boolean | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ActivityMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     title: string | null
     description: string | null
+    minBudget: number | null
+    maxBudget: number | null
+    isOutdoor: boolean | null
+    isHomeActivity: boolean | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ActivityCountAggregateOutputType = {
     id: number
     title: number
     description: number
+    weatherTypes: number
+    timeOfDay: number
+    minBudget: number
+    maxBudget: number
+    isOutdoor: number
+    isHomeActivity: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type ActivityAvgAggregateInputType = {
-    id?: true
+    minBudget?: true
+    maxBudget?: true
   }
 
   export type ActivitySumAggregateInputType = {
-    id?: true
+    minBudget?: true
+    maxBudget?: true
   }
 
   export type ActivityMinAggregateInputType = {
     id?: true
     title?: true
     description?: true
+    minBudget?: true
+    maxBudget?: true
+    isOutdoor?: true
+    isHomeActivity?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ActivityMaxAggregateInputType = {
     id?: true
     title?: true
     description?: true
+    minBudget?: true
+    maxBudget?: true
+    isOutdoor?: true
+    isHomeActivity?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ActivityCountAggregateInputType = {
     id?: true
     title?: true
     description?: true
+    weatherTypes?: true
+    timeOfDay?: true
+    minBudget?: true
+    maxBudget?: true
+    isOutdoor?: true
+    isHomeActivity?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2327,9 +2377,18 @@ export namespace Prisma {
   }
 
   export type ActivityGroupByOutputType = {
-    id: number
+    id: string
     title: string
-    description: string
+    description: string | null
+    weatherTypes: string[]
+    timeOfDay: string[]
+    minBudget: number
+    maxBudget: number | null
+    isOutdoor: boolean
+    isHomeActivity: boolean
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
     _count: ActivityCountAggregateOutputType | null
     _avg: ActivityAvgAggregateOutputType | null
     _sum: ActivitySumAggregateOutputType | null
@@ -2355,6 +2414,15 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    weatherTypes?: boolean
+    timeOfDay?: boolean
+    minBudget?: boolean
+    maxBudget?: boolean
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     tags?: boolean | Activity$tagsArgs<ExtArgs>
     _count?: boolean | ActivityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["activity"]>
@@ -2363,21 +2431,48 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    weatherTypes?: boolean
+    timeOfDay?: boolean
+    minBudget?: boolean
+    maxBudget?: boolean
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["activity"]>
 
   export type ActivitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     description?: boolean
+    weatherTypes?: boolean
+    timeOfDay?: boolean
+    minBudget?: boolean
+    maxBudget?: boolean
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["activity"]>
 
   export type ActivitySelectScalar = {
     id?: boolean
     title?: boolean
     description?: boolean
+    weatherTypes?: boolean
+    timeOfDay?: boolean
+    minBudget?: boolean
+    maxBudget?: boolean
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type ActivityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description", ExtArgs["result"]["activity"]>
+  export type ActivityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "weatherTypes" | "timeOfDay" | "minBudget" | "maxBudget" | "isOutdoor" | "isHomeActivity" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["activity"]>
   export type ActivityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tags?: boolean | Activity$tagsArgs<ExtArgs>
     _count?: boolean | ActivityCountOutputTypeDefaultArgs<ExtArgs>
@@ -2391,9 +2486,18 @@ export namespace Prisma {
       tags: Prisma.$TagPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       title: string
-      description: string
+      description: string | null
+      weatherTypes: string[]
+      timeOfDay: string[]
+      minBudget: number
+      maxBudget: number | null
+      isOutdoor: boolean
+      isHomeActivity: boolean
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["activity"]>
     composites: {}
   }
@@ -2818,9 +2922,18 @@ export namespace Prisma {
    * Fields of the Activity model
    */
   interface ActivityFieldRefs {
-    readonly id: FieldRef<"Activity", 'Int'>
+    readonly id: FieldRef<"Activity", 'String'>
     readonly title: FieldRef<"Activity", 'String'>
     readonly description: FieldRef<"Activity", 'String'>
+    readonly weatherTypes: FieldRef<"Activity", 'String[]'>
+    readonly timeOfDay: FieldRef<"Activity", 'String[]'>
+    readonly minBudget: FieldRef<"Activity", 'Int'>
+    readonly maxBudget: FieldRef<"Activity", 'Int'>
+    readonly isOutdoor: FieldRef<"Activity", 'Boolean'>
+    readonly isHomeActivity: FieldRef<"Activity", 'Boolean'>
+    readonly isActive: FieldRef<"Activity", 'Boolean'>
+    readonly createdAt: FieldRef<"Activity", 'DateTime'>
+    readonly updatedAt: FieldRef<"Activity", 'DateTime'>
   }
     
 
@@ -4298,7 +4411,16 @@ export namespace Prisma {
   export const ActivityScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    description: 'description'
+    description: 'description',
+    weatherTypes: 'weatherTypes',
+    timeOfDay: 'timeOfDay',
+    minBudget: 'minBudget',
+    maxBudget: 'maxBudget',
+    isOutdoor: 'isOutdoor',
+    isHomeActivity: 'isHomeActivity',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
@@ -4325,6 +4447,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4385,6 +4515,13 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4468,33 +4605,69 @@ export namespace Prisma {
     AND?: ActivityWhereInput | ActivityWhereInput[]
     OR?: ActivityWhereInput[]
     NOT?: ActivityWhereInput | ActivityWhereInput[]
-    id?: IntFilter<"Activity"> | number
+    id?: StringFilter<"Activity"> | string
     title?: StringFilter<"Activity"> | string
-    description?: StringFilter<"Activity"> | string
+    description?: StringNullableFilter<"Activity"> | string | null
+    weatherTypes?: StringNullableListFilter<"Activity">
+    timeOfDay?: StringNullableListFilter<"Activity">
+    minBudget?: IntFilter<"Activity"> | number
+    maxBudget?: IntNullableFilter<"Activity"> | number | null
+    isOutdoor?: BoolFilter<"Activity"> | boolean
+    isHomeActivity?: BoolFilter<"Activity"> | boolean
+    isActive?: BoolFilter<"Activity"> | boolean
+    createdAt?: DateTimeFilter<"Activity"> | Date | string
+    updatedAt?: DateTimeFilter<"Activity"> | Date | string
     tags?: TagListRelationFilter
   }
 
   export type ActivityOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
+    weatherTypes?: SortOrder
+    timeOfDay?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrderInput | SortOrder
+    isOutdoor?: SortOrder
+    isHomeActivity?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     tags?: TagOrderByRelationAggregateInput
   }
 
   export type ActivityWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: ActivityWhereInput | ActivityWhereInput[]
     OR?: ActivityWhereInput[]
     NOT?: ActivityWhereInput | ActivityWhereInput[]
     title?: StringFilter<"Activity"> | string
-    description?: StringFilter<"Activity"> | string
+    description?: StringNullableFilter<"Activity"> | string | null
+    weatherTypes?: StringNullableListFilter<"Activity">
+    timeOfDay?: StringNullableListFilter<"Activity">
+    minBudget?: IntFilter<"Activity"> | number
+    maxBudget?: IntNullableFilter<"Activity"> | number | null
+    isOutdoor?: BoolFilter<"Activity"> | boolean
+    isHomeActivity?: BoolFilter<"Activity"> | boolean
+    isActive?: BoolFilter<"Activity"> | boolean
+    createdAt?: DateTimeFilter<"Activity"> | Date | string
+    updatedAt?: DateTimeFilter<"Activity"> | Date | string
     tags?: TagListRelationFilter
   }, "id">
 
   export type ActivityOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
+    weatherTypes?: SortOrder
+    timeOfDay?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrderInput | SortOrder
+    isOutdoor?: SortOrder
+    isHomeActivity?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: ActivityCountOrderByAggregateInput
     _avg?: ActivityAvgOrderByAggregateInput
     _max?: ActivityMaxOrderByAggregateInput
@@ -4506,9 +4679,18 @@ export namespace Prisma {
     AND?: ActivityScalarWhereWithAggregatesInput | ActivityScalarWhereWithAggregatesInput[]
     OR?: ActivityScalarWhereWithAggregatesInput[]
     NOT?: ActivityScalarWhereWithAggregatesInput | ActivityScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Activity"> | number
+    id?: StringWithAggregatesFilter<"Activity"> | string
     title?: StringWithAggregatesFilter<"Activity"> | string
-    description?: StringWithAggregatesFilter<"Activity"> | string
+    description?: StringNullableWithAggregatesFilter<"Activity"> | string | null
+    weatherTypes?: StringNullableListFilter<"Activity">
+    timeOfDay?: StringNullableListFilter<"Activity">
+    minBudget?: IntWithAggregatesFilter<"Activity"> | number
+    maxBudget?: IntNullableWithAggregatesFilter<"Activity"> | number | null
+    isOutdoor?: BoolWithAggregatesFilter<"Activity"> | boolean
+    isHomeActivity?: BoolWithAggregatesFilter<"Activity"> | boolean
+    isActive?: BoolWithAggregatesFilter<"Activity"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Activity"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Activity"> | Date | string
   }
 
   export type TagWhereInput = {
@@ -4607,46 +4789,112 @@ export namespace Prisma {
   }
 
   export type ActivityCreateInput = {
+    id?: string
     title: string
-    description: string
+    description?: string | null
+    weatherTypes?: ActivityCreateweatherTypesInput | string[]
+    timeOfDay?: ActivityCreatetimeOfDayInput | string[]
+    minBudget: number
+    maxBudget?: number | null
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
     tags?: TagCreateNestedManyWithoutEntertainmentsInput
   }
 
   export type ActivityUncheckedCreateInput = {
-    id?: number
+    id?: string
     title: string
-    description: string
+    description?: string | null
+    weatherTypes?: ActivityCreateweatherTypesInput | string[]
+    timeOfDay?: ActivityCreatetimeOfDayInput | string[]
+    minBudget: number
+    maxBudget?: number | null
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
     tags?: TagUncheckedCreateNestedManyWithoutEntertainmentsInput
   }
 
   export type ActivityUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tags?: TagUpdateManyWithoutEntertainmentsNestedInput
   }
 
   export type ActivityUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tags?: TagUncheckedUpdateManyWithoutEntertainmentsNestedInput
   }
 
   export type ActivityCreateManyInput = {
-    id?: number
+    id?: string
     title: string
-    description: string
+    description?: string | null
+    weatherTypes?: ActivityCreateweatherTypesInput | string[]
+    timeOfDay?: ActivityCreatetimeOfDayInput | string[]
+    minBudget: number
+    maxBudget?: number | null
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ActivityUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ActivityUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TagCreateInput = {
@@ -4818,10 +5066,54 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type TagListRelationFilter = {
     every?: TagWhereInput
     some?: TagWhereInput
     none?: TagWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type TagOrderByRelationAggregateInput = {
@@ -4832,26 +5124,93 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    weatherTypes?: SortOrder
+    timeOfDay?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrder
+    isOutdoor?: SortOrder
+    isHomeActivity?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ActivityAvgOrderByAggregateInput = {
-    id?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrder
   }
 
   export type ActivityMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrder
+    isOutdoor?: SortOrder
+    isHomeActivity?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ActivityMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrder
+    isOutdoor?: SortOrder
+    isHomeActivity?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ActivitySumOrderByAggregateInput = {
-    id?: SortOrder
+    minBudget?: SortOrder
+    maxBudget?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ActivityListRelationFilter = {
@@ -4896,6 +5255,14 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type ActivityCreateweatherTypesInput = {
+    set: string[]
+  }
+
+  export type ActivityCreatetimeOfDayInput = {
+    set: string[]
+  }
+
   export type TagCreateNestedManyWithoutEntertainmentsInput = {
     create?: XOR<TagCreateWithoutEntertainmentsInput, TagUncheckedCreateWithoutEntertainmentsInput> | TagCreateWithoutEntertainmentsInput[] | TagUncheckedCreateWithoutEntertainmentsInput[]
     connectOrCreate?: TagCreateOrConnectWithoutEntertainmentsInput | TagCreateOrConnectWithoutEntertainmentsInput[]
@@ -4906,6 +5273,32 @@ export namespace Prisma {
     create?: XOR<TagCreateWithoutEntertainmentsInput, TagUncheckedCreateWithoutEntertainmentsInput> | TagCreateWithoutEntertainmentsInput[] | TagUncheckedCreateWithoutEntertainmentsInput[]
     connectOrCreate?: TagCreateOrConnectWithoutEntertainmentsInput | TagCreateOrConnectWithoutEntertainmentsInput[]
     connect?: TagWhereUniqueInput | TagWhereUniqueInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type ActivityUpdateweatherTypesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ActivityUpdatetimeOfDayInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type TagUpdateManyWithoutEntertainmentsNestedInput = {
@@ -5083,6 +5476,88 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type TagCreateWithoutEntertainmentsInput = {
     name: string
   }
@@ -5120,14 +5595,33 @@ export namespace Prisma {
   }
 
   export type ActivityCreateWithoutTagsInput = {
+    id?: string
     title: string
-    description: string
+    description?: string | null
+    weatherTypes?: ActivityCreateweatherTypesInput | string[]
+    timeOfDay?: ActivityCreatetimeOfDayInput | string[]
+    minBudget: number
+    maxBudget?: number | null
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ActivityUncheckedCreateWithoutTagsInput = {
-    id?: number
+    id?: string
     title: string
-    description: string
+    description?: string | null
+    weatherTypes?: ActivityCreateweatherTypesInput | string[]
+    timeOfDay?: ActivityCreatetimeOfDayInput | string[]
+    minBudget: number
+    maxBudget?: number | null
+    isOutdoor?: boolean
+    isHomeActivity?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ActivityCreateOrConnectWithoutTagsInput = {
@@ -5155,9 +5649,18 @@ export namespace Prisma {
     AND?: ActivityScalarWhereInput | ActivityScalarWhereInput[]
     OR?: ActivityScalarWhereInput[]
     NOT?: ActivityScalarWhereInput | ActivityScalarWhereInput[]
-    id?: IntFilter<"Activity"> | number
+    id?: StringFilter<"Activity"> | string
     title?: StringFilter<"Activity"> | string
-    description?: StringFilter<"Activity"> | string
+    description?: StringNullableFilter<"Activity"> | string | null
+    weatherTypes?: StringNullableListFilter<"Activity">
+    timeOfDay?: StringNullableListFilter<"Activity">
+    minBudget?: IntFilter<"Activity"> | number
+    maxBudget?: IntNullableFilter<"Activity"> | number | null
+    isOutdoor?: BoolFilter<"Activity"> | boolean
+    isHomeActivity?: BoolFilter<"Activity"> | boolean
+    isActive?: BoolFilter<"Activity"> | boolean
+    createdAt?: DateTimeFilter<"Activity"> | Date | string
+    updatedAt?: DateTimeFilter<"Activity"> | Date | string
   }
 
   export type TagUpdateWithoutEntertainmentsInput = {
@@ -5173,20 +5676,48 @@ export namespace Prisma {
   }
 
   export type ActivityUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ActivityUncheckedUpdateWithoutTagsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ActivityUncheckedUpdateManyWithoutTagsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    weatherTypes?: ActivityUpdateweatherTypesInput | string[]
+    timeOfDay?: ActivityUpdatetimeOfDayInput | string[]
+    minBudget?: IntFieldUpdateOperationsInput | number
+    maxBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    isOutdoor?: BoolFieldUpdateOperationsInput | boolean
+    isHomeActivity?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
